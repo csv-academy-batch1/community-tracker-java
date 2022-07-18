@@ -20,7 +20,7 @@ public class Community {
     private String communityIcon;
 
     @Column(name = "communitymgrid")
-    private Long communityMgrId;
+    private Long communityManagerId;
 
     @Column(name = "communitydesc")
     private String communityDesc;

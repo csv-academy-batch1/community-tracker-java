@@ -32,7 +32,7 @@ public class communityController {
     }
     @PostMapping
     ResponseEntity<CreateCommunityResponse> createCommunity(@RequestBody Community community) {
-        Manager manager = managerService.findManagerById(community.getCommunityMgrId());
+        Manager manager = managerService.findManagerById(community.getCommunityManagerId());
         communityService.createCommunity(community);
         return new ResponseEntity<>(outputCommunityMap.addedCommunityMap(community, manager), HttpStatus.CREATED);
     }
