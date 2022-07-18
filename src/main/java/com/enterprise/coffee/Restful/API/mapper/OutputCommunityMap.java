@@ -24,7 +24,7 @@ public class OutputCommunityMap {
             list.add(communityList);
         }
         GetCommunityResponse communityGetResponse = new GetCommunityResponse();
-        communityGetResponse.setList(list);
+        communityGetResponse.setCommunities(list);
         return communityGetResponse;
     }
 }

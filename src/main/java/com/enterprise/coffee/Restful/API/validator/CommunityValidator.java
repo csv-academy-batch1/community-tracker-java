@@ -1,6 +1,6 @@
 package com.enterprise.coffee.Restful.API.validator;
 
-import com.enterprise.coffee.Restful.API.exception.CommunityTrackerException;
+import com.enterprise.coffee.Restful.API.exception.CommunityException;
 import com.enterprise.coffee.Restful.API.model.Community;
 import com.enterprise.coffee.Restful.API.repository.CommunityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ public class CommunityValidator {
     public void validateCommunityName(Community community) {
         Optional<Community> communityOptional = Optional.ofNullable(communityRepository.findByCommunityName(community.getCommunityName()));
         if (communityOptional.isPresent()) {
-            throw new CommunityTrackerException();
+            throw new CommunityException();
         }
     }
 }

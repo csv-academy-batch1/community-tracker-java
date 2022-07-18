@@ -27,6 +27,4 @@ public class CommunityServiceImpl implements CommunityService {
             addValidator.validateCommunityName(community);
             return communityRepository.save(community);
     }
-
-
 }

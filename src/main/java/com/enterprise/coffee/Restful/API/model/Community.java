@@ -16,13 +16,13 @@ public class Community {
     @Column(name = "communityname", nullable = false)
     private String communityName;
 
-    @Column(name = "communityicon", nullable = true)
+    @Column(name = "communityicon")
     private String communityIcon;
 
-    @Column(name = "communitymgrid", nullable = true)
+    @Column(name = "communitymgrid")
     private Long communityMgrId;
 
-    @Column(name = "communitydesc", nullable = true)
+    @Column(name = "communitydesc")
     private String communityDesc;
 
     @Column(name = "isactive")

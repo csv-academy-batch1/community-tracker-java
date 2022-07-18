@@ -7,6 +7,6 @@ import java.util.List;
 @Data
 public class GetCommunityResponse {
 
-    List<CommunityList> list = new ArrayList<>();
+    List<CommunityList> communities = new ArrayList<>();
 }
 

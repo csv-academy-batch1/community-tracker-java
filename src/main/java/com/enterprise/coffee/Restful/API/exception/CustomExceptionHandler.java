@@ -13,8 +13,8 @@ import java.util.Map;
 @ControllerAdvice
 public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(CommunityTrackerException.class)
-    public final ResponseEntity<Map<String, Object>> communityError(CommunityTrackerException ex){
+    @ExceptionHandler(CommunityException.class)
+    public final ResponseEntity<Map<String, Object>> somethingWentWrong(CommunityException ex){
         ErrorMessage exceptionResponse = new ErrorMessage();
         Map<String, Object> map = new LinkedHashMap<>();
         map.put("result:", exceptionResponse);
