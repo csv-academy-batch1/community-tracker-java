@@ -1,10 +1,7 @@
 FROM maven:3-openjdk-11
-COPY ./usr/src/community-tracker-java
-WORKDIR /usr/src/community-tracker-java
+
+COPY . /usr/src/ct
+WORKDIR /usr/src/ct
+
 RUN mvn -Dmaven.test.skip=true package
-COPY target/*.jar app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
-
-
-
-
+ENTRYPOINT ["java", "-jar", "/usr/src/ct/target/Community-Management-0.0.1-SNAPSHOT.jar"]
