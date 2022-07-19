@@ -3,9 +3,11 @@
 
 name: community-tracker-java Build & Deploy
 
-on:    
-  workflow_run:
-    branches: [main]
+on:
+  workflow_dispatch:
+
+  push:
+    branches: [ main ]
     
 jobs:
   build:
