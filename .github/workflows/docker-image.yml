@@ -32,5 +32,5 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: communitytrackeracr.azurecr.io/${{ secrets.AzureAppService_ContainerUsername }}/community-tracker-java:${{ github.sha }}
+        tags: communitytrackeracr.azurecr.io/ct/community-tracker-java:${{ github.sha }}
         file: ./Dockerfile
