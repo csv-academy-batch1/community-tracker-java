@@ -12,5 +12,6 @@ public class CreateCommunityResponse {
 
     private String communityDesc;
 
+    private Boolean isActive;
 
 }

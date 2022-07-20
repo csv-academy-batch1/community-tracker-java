@@ -21,10 +21,10 @@ public class Manager {
     @Column(name = "passkey", nullable = false)
     private String passKey;
 
-    @Column(name = "roletype", nullable = true)
+    @Column(name = "roletype")
     private String roleType;
 
     @Column(name = "isactive", nullable = false)
-    private boolean status = true;
+    private Boolean isActive;
 
 }

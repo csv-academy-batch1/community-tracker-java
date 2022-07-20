@@ -15,16 +15,35 @@ public class CommunityServiceImpl implements CommunityService {
     private CommunityRepository communityRepository;
 
     @Autowired
-    private CommunityValidator addValidator;
+    private CommunityValidator communityValidator;
 
     @Override
     public List<Community> getAllCommunity() {
-        return communityRepository.getCommunityByStatus(true);
+        return communityRepository.getCommunityByIsActive(true);
     }
 
     @Override
     public Community createCommunity(Community community) {
-            addValidator.validateCommunityName(community);
-            return communityRepository.save(community);
+        communityValidator.validateCommunityName(community);
+        communityValidator.validateCommunityManager(community);
+        community.setIsActive(true);
+        return communityRepository.save(community);
+    }
+
+    @Override
+    public Community updateCommunity(Community community, Long id) {
+
+        communityValidator.validateCommunityIdForUpdate(community, id);
+        communityValidator.validateCommunityId(community);
+        communityValidator.validateCommunityIsActive(id);
+        communityValidator.validateCommunityManager(community);
+        communityValidator.validateUpdateCommunityName(community, id);
+
+        Community existingCommunity = communityRepository.findById(id).get();
+        existingCommunity.setCommunityId(id);
+        existingCommunity.setCommunityName(community.getCommunityName());
+        existingCommunity.setCommunityMgrid(community.getCommunityMgrid());
+        existingCommunity.setCommunityDesc(community.getCommunityDesc());
+        return communityRepository.save(existingCommunity);
     }
 }

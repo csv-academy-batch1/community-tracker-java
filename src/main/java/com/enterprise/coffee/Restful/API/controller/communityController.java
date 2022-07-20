@@ -11,19 +11,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
 @RequestMapping("/community")
-public class communityController {
+public class CommunityController {
+
+    private CommunityService communityService;
+    private OutputCommunityMap outputCommunityMap;
+    private ManagerService managerService;
 
     @Autowired
-    private CommunityService communityService;
-    @Autowired
-    private OutputCommunityMap outputCommunityMap;
-    @Autowired
-    private ManagerService managerService;
+    public CommunityController(CommunityService communityService, OutputCommunityMap outputCommunityMap, ManagerService managerService) {
+        this.communityService = communityService;
+        this.outputCommunityMap = outputCommunityMap;
+        this.managerService = managerService;
+    }
 
     @GetMapping
     ResponseEntity<GetCommunityResponse> getAllCommunity(){
@@ -32,8 +35,15 @@ public class communityController {
     }
     @PostMapping
     ResponseEntity<CreateCommunityResponse> createCommunity(@RequestBody Community community) {
-        Manager manager = managerService.findManagerById(community.getCommunityManagerId());
+        Manager manager = managerService.findManagerById(community.getCommunityMgrid());
         communityService.createCommunity(community);
         return new ResponseEntity<>(outputCommunityMap.addedCommunityMap(community, manager), HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{id}")
+    ResponseEntity<CreateCommunityResponse> updateCommunity(@PathVariable Long id, @RequestBody Community community) {
+        Manager manager = managerService.findManagerById(community.getCommunityMgrid());
+        Community updateCommunity = communityService.updateCommunity(community, id);
+        return new ResponseEntity<>(outputCommunityMap.updatedCommunityMap(updateCommunity, manager, id), HttpStatus.ACCEPTED);
     }
 }

@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.Optional;
 @Repository
 public interface CommunityRepository extends JpaRepository<Community, Long> {
-
     Community findByCommunityName(String name);
+    List<Community> getCommunityByIsActive(Boolean isActive);
 
-    List<Community> getCommunityByStatus(boolean status);
+    Community findByCommunityNameIgnoreCase(String string);
 
 }

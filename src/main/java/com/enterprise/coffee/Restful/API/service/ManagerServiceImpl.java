@@ -4,8 +4,8 @@ import com.enterprise.coffee.Restful.API.model.Manager;
 import com.enterprise.coffee.Restful.API.repository.ManagerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.Optional;
+
 @Service
 public class ManagerServiceImpl implements ManagerService{
 
