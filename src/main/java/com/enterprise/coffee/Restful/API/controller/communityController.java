@@ -16,17 +16,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/community")
 public class CommunityController {
-
-    private CommunityService communityService;
-    private OutputCommunityMap outputCommunityMap;
-    private ManagerService managerService;
-
     @Autowired
-    public CommunityController(CommunityService communityService, OutputCommunityMap outputCommunityMap, ManagerService managerService) {
-        this.communityService = communityService;
-        this.outputCommunityMap = outputCommunityMap;
-        this.managerService = managerService;
-    }
+    private CommunityService communityService;
+    @Autowired
+    private OutputCommunityMap outputCommunityMap;
+    @Autowired
+    private ManagerService managerService;
 
     @GetMapping
     ResponseEntity<GetCommunityResponse> getAllCommunity(){
