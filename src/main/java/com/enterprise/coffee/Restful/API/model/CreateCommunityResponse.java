@@ -4,11 +4,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 @Data
 public class CreateCommunityResponse {
-    @JsonProperty("Community Id")
+    @JsonProperty("CommunityId")
     private Long communityId;
-    @JsonProperty("Community Name")
+    @JsonProperty("CommunityName")
     private String communityName;
-    @JsonProperty("Community Manager")
+    @JsonProperty("CommunityManager")
     private String communityManagerName;
     @JsonProperty("Description")
     private String communityDesc;
