@@ -31,10 +31,10 @@ public class CommunityServiceImpl implements CommunityService {
     }
 
     @Override
-    public Community updateCommunity(Community community, Long id) {
+    public Community updateCommunity( Community community, Long id) {
 
-        communityValidator.validateCommunityIdForUpdate(community, id);
         communityValidator.validateCommunityId(community);
+        communityValidator.validateCommunityIdForUpdate(community, id);
         communityValidator.validateCommunityIsActive(id);
         communityValidator.validateCommunityManager(community);
         communityValidator.validateUpdateCommunityName(community, id);
@@ -43,7 +43,7 @@ public class CommunityServiceImpl implements CommunityService {
         existingCommunity.setCommunityId(id);
         existingCommunity.setCommunityName(community.getCommunityName());
         existingCommunity.setCommunityMgrid(community.getCommunityMgrid());
-        existingCommunity.setCommunityDesc(community.getCommunityDesc());
+        existingCommunity.setDescription(community.getDescription());
         return communityRepository.save(existingCommunity);
     }
 }

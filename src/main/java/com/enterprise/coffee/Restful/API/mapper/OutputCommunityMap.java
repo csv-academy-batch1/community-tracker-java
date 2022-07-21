@@ -2,6 +2,9 @@ package com.enterprise.coffee.Restful.API.mapper;
 
 import com.enterprise.coffee.Restful.API.model.*;
 import com.enterprise.coffee.Restful.API.repository.CommunityRepository;
+import com.enterprise.coffee.Restful.API.response.CommunityList;
+import com.enterprise.coffee.Restful.API.response.CreateCommunityResponse;
+import com.enterprise.coffee.Restful.API.response.GetCommunityResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,12 +16,12 @@ public class OutputCommunityMap {
     @Autowired
     private CommunityRepository communityRepository;
 
-    public CreateCommunityResponse addedCommunityMap(Community community, Manager manager){
+    public CreateCommunityResponse addedCommunityMap( Community community, Manager manager){
         CreateCommunityResponse createCommunityResponse = new CreateCommunityResponse();
         createCommunityResponse.setCommunityId(community.getCommunityId());
         createCommunityResponse.setCommunityName(community.getCommunityName());
-        createCommunityResponse.setCommunityManagerName(manager.getCommunityMgrName());
-        createCommunityResponse.setCommunityDesc(community.getCommunityDesc());
+        createCommunityResponse.setCommunityManager(manager.getCommunityMgrName());
+        createCommunityResponse.setCommunityDesc(community.getDescription());
         createCommunityResponse.setIsActive(community.getIsActive());
         return createCommunityResponse;
     }
@@ -38,8 +41,8 @@ public class OutputCommunityMap {
         CreateCommunityResponse updateCommunityResponse = new CreateCommunityResponse();
         updateCommunityResponse.setCommunityId(id);
         updateCommunityResponse.setCommunityName(community.getCommunityName());
-        updateCommunityResponse.setCommunityManagerName(manager.getCommunityMgrName());
-        updateCommunityResponse.setCommunityDesc(community.getCommunityDesc());
+        updateCommunityResponse.setCommunityManager(manager.getCommunityMgrName());
+        updateCommunityResponse.setCommunityDesc(community.getDescription());
         updateCommunityResponse.setIsActive(community.getIsActive());
         return updateCommunityResponse;
     }
