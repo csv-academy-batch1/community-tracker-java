@@ -22,7 +22,6 @@ public class Community {
     @Column(name = "communityname", nullable = false)
     private String communityName;
 
-    @JsonProperty("Communityicon")
     @Column(name = "communityicon")
     private String communityIcon;
 
@@ -32,10 +31,16 @@ public class Community {
 
     @JsonProperty("Description")
     @Column(name = "communitydesc")
-    private String description;
+    private String communityDesc;
 
-    @JsonProperty("Active")
     @Column(name = "isactive")
     private Boolean isActive;
+
+    //++++++++++++++++++++++++++++++++ FOR CONTROLLER TESTING ++++++++++++++++++++++++++++++++++++
+    public Community(String communityName, Long communityMgrid, String communityDesc){
+        this.communityName = communityName;
+        this.communityMgrid = communityMgrid;
+        this.communityDesc = communityDesc;
+    }
 
 }
