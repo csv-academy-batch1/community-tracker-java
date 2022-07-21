@@ -31,19 +31,18 @@ public class CommunityServiceImpl implements CommunityService {
     }
 
     @Override
-    public Community updateCommunity( Community community, Long id) {
-
-        communityValidator.validateCommunityId(community);
-        communityValidator.validateCommunityIdForUpdate(community, id);
-        communityValidator.validateCommunityIsActive(id);
-        communityValidator.validateCommunityManager(community);
-        communityValidator.validateUpdateCommunityName(community, id);
+    public Community updateCommunity(Community community, Long id) {
+        communityValidator.validateCommunityId(community);               //Validate Community ID if exist
+        communityValidator.validateCommunityIdForUpdate(community, id);  //Validate Community ID and  Endpoint if match
+        communityValidator.validateCommunityIsActive(id);                //Validate Community if Active
+        communityValidator.validateCommunityManager(community);          //Validate Community Manager if exist
+        communityValidator.validateUpdateCommunityName(community, id);   //Validate Community name if match to the community id and community name if exist
 
         Community existingCommunity = communityRepository.findById(id).get();
         existingCommunity.setCommunityId(id);
         existingCommunity.setCommunityName(community.getCommunityName());
         existingCommunity.setCommunityMgrid(community.getCommunityMgrid());
-        existingCommunity.setDescription(community.getDescription());
+        existingCommunity.setCommunityDesc(community.getCommunityDesc());
         return communityRepository.save(existingCommunity);
     }
 }
