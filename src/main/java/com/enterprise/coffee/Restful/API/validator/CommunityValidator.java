@@ -43,8 +43,11 @@ public class CommunityValidator {
     }
 
     public void validateCommunityIdForUpdate(Community community, Long id){
-        if (community.getCommunityId() != id) {
+        //if (community.getCommunityId() != id) {
+        if (community.getCommunityId().longValue() != id.longValue()) {
             System.out.println("Community ID  and  Endpoint doest match!");
+            System.out.println(community.getCommunityId());
+            System.out.println(id);
             throw new CommunityException();
         }
     }

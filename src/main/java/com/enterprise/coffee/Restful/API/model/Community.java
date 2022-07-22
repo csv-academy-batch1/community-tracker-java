@@ -33,7 +33,7 @@ public class Community {
     @Column(name = "communitydesc")
     private String communityDesc;
 
-    @Column(name = "isactive")
+    @Column(name = "isactive", nullable = false)
     private Boolean isActive;
 
     //++++++++++++++++++++++++++++++++ FOR CONTROLLER TESTING ++++++++++++++++++++++++++++++++++++
