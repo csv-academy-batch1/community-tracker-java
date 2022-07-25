@@ -43,8 +43,7 @@ public class CommunityValidator {
     }
 
     public void validateCommunityIdForUpdate(Community community, Long id){
-        //if (community.getCommunityId() != id) {
-        if (community.getCommunityId().longValue() != id.longValue()) {
+        if (community.getCommunityId().longValue() != id) {
             System.out.println("Community ID  and  Endpoint doest match!");
             System.out.println(community.getCommunityId());
             System.out.println(id);
@@ -63,10 +62,18 @@ public class CommunityValidator {
     public void validateUpdateCommunityName(Community community, Long id) {
         Optional<Community> communityOptional = Optional.ofNullable(communityRepository.findByCommunityNameIgnoreCase(community.getCommunityName()));
         if (communityOptional.isPresent()) {
-           if(communityOptional.get().getCommunityId() != id) {
+           if(communityOptional.get().getCommunityId().longValue() != id) {
              System.out.println("Community name doesn't match to the community id! and Community Name is already exist");
             throw new CommunityException();
            }
+        }
+    }
+
+    public void validateCommunityIdForDeletion(Long id){
+        Optional<Community> communityOptional = communityRepository.findById(id.longValue());
+        if (communityOptional.isEmpty()) {
+            System.out.println("Community ID not exist!");
+            throw new CommunityException();
         }
     }
 }

@@ -33,6 +33,7 @@ public class Community {
     @Column(name = "communitydesc")
     private String communityDesc;
 
+    @JsonProperty("Active")
     @Column(name = "isactive", nullable = false)
     private Boolean isActive;
 

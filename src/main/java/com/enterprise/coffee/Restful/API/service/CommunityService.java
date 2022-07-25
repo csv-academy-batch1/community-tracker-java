@@ -10,4 +10,7 @@ public interface CommunityService {
     Community createCommunity(Community community);
 
     Community updateCommunity(Community community, Long id);
+
+    void deleteCommunity(Long id);
+
 }

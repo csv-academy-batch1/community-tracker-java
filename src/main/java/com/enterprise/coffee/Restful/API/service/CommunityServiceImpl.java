@@ -45,4 +45,14 @@ public class CommunityServiceImpl implements CommunityService {
         existingCommunity.setCommunityDesc(community.getCommunityDesc());
         return communityRepository.save(existingCommunity);
     }
+
+    @Override
+    public void deleteCommunity(Long id) {
+        communityValidator.validateCommunityIdForDeletion(id);
+        communityValidator.validateCommunityIsActive(id);
+
+        Community community = communityRepository.findById(id).get();
+        community.setIsActive(false);
+        communityRepository.save(community);
+    }
 }
