@@ -28,6 +28,8 @@ public class OutputCommunityMap {
             CommunityList communityList = new CommunityList();
             communityList.setCommunityId(community.getCommunityId());
             communityList.setCommunityName(community.getCommunityName());
+            communityList.setCommunityMgrId(community.getCommunityMgrid());
+            communityList.setDescription(community.getCommunityDesc());
             list.add(communityList);
         }
         GetCommunityResponse communityGetResponse = new GetCommunityResponse();

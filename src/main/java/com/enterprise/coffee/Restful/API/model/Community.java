@@ -43,5 +43,4 @@ public class Community {
         this.communityMgrid = communityMgrid;
         this.communityDesc = communityDesc;
     }
-
 }

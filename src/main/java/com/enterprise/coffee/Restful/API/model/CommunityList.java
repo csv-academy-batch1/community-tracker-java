@@ -9,4 +9,8 @@ public class CommunityList {
     private Long communityId;
     @JsonProperty("CommunityName")
     private String communityName;
+    @JsonProperty("CommunityMgrId")
+    private Long communityMgrId;
+    @JsonProperty("Description")
+    private String description;
 }

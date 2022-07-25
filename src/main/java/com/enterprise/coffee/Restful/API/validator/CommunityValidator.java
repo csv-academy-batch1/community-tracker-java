@@ -25,7 +25,6 @@ public class CommunityValidator {
             throw new CommunityException();
         }
     }
-
     public void validateCommunityId(Community community){
         Optional<Community> communityOptional = communityRepository.findById(community.getCommunityId());
         if (communityOptional.isEmpty()) {
